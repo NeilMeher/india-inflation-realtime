@@ -1,0 +1,5 @@
+# Forecast design
+
+Question: how do unreleased observations bias a small inflation backtest? Target the first published All-India combined year-on-year General CPI inflation for each month, base 2012=100. Issue the nowcast at the end of that month, before its release. Require five prior releases and walk forward one month at a time. The baseline carries forward the most recent available rate. Fit an autoregression with an intercept by ordinary least squares to the available adjacent month pairs. Compare mean absolute error in percentage points over common origins.
+
+In an intentionally contaminated backtest, move each publication date backward to the observation's month-end, imitating a merge keyed only on observation period. Exclude the target month from the fit, but let that incorrectly available value enter the lag feature for the next one-step calculation. For persistence this effectively copies the answer. Label these runs as leakage diagnostics. Compare performance on the same eight month-ends. The input archive holds only the first releases and does not reconstruct later revisions.
